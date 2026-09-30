@@ -21,7 +21,7 @@ while (true)
     // Loops untill the user enters a valid number between 1 and 5.
     while(!int.TryParse(Console.ReadLine(), out choice)||choice<1 || choice>5)
     {
-        Console.Write("Skriv ett heltal eller välj en siffra från meny.\nVälj:");
+        Console.Write("Skriv ett heltal eller välj en siffra från meny.\nVälj: ");
     }
 
 
@@ -31,9 +31,18 @@ while (true)
         Console.Write("Namn: ");
         string name = Console.ReadLine();
         Console.Write("Pris: ");
-        int price = int.Parse(Console.ReadLine());
+
+        int price;
+
+        //  Loops untill the user enters a valid and positiv number.
+        while(!int.TryParse(Console.ReadLine(),out price) || price<0)
+        {
+            Console.Write("Ange ett positiv och heltal.\nPris:");
+        }
+
         list.Add(new Item(name, price)); // This adds the name and the price to the list
     }
+    
     else if (choice == 2)
     {
         Console.Write("Nummer: ");

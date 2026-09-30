@@ -19,3 +19,12 @@ När programmet bad om en siffra från menyn och använderen skrev bokstäver kr
 
 Lösning:
 Jag byte ut int.Parse med int.TryParse och lade in det i en while-loop. TryParse testar om inmatning är en siffra (utan att krascha), Loopen kontrollerar samtidigt om inmattning är mellan 1 och 5. 
+
+## Tredje felet
+(Program.cs) (Choice = 1)
+
+Förklaring:
+När användaren skulle lägga till en ny vara och skrev in bokstäver istället för heltal då kraschade programmet ("FormatException"). Det var också möjligt att skriva in negativ tal vilket inte är logiskt.
+
+Lösning:
+Jag lade i en while-loop tillsammans med int.TryParse när priset anges. Koden testar nu att inmatming är en siffra utan att krascha och jag lade till ett vilkor som kontrollerar om talet är positiv. Om användaren gör fel tvingas de att försöka igen.

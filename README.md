@@ -11,3 +11,11 @@ Jag tog bort File.ReadAllText() och Split(\n). Istället använder jag bara File
 Dens funktion är att den delar automatisk raderna och hoppar över tomma rader. 
 
 
+## Andra Felet
+(Program.cs)
+
+Förklaring:
+När programmet bad om en siffra från menyn och använderen skrev bokstäver kraschade programmet ("FormatException"). Man kunde dessutom skriva in siffror som inte fanns i menyn (till exempel 9 eller -1)
+
+Lösning:
+Jag byte ut int.Parse med int.TryParse och lade in det i en while-loop. TryParse testar om inmatning är en siffra (utan att krascha), Loopen kontrollerar samtidigt om inmattning är mellan 1 och 5. 

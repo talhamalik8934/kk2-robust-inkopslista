@@ -15,9 +15,15 @@ while (true)
     Console.WriteLine("5. Avsluta");
     Console.Write("Välj: ");
 
-    // int choice is the number that the user types in.
-    // int.parse cheanges the string to in which saves in the variable choice.
-    int choice = int.Parse(Console.ReadLine());
+    // Stores the user's menu choice.
+    int choice;
+    
+    // Loops untill the user enters a valid number between 1 and 5.
+    while(!int.TryParse(Console.ReadLine(), out choice)||choice<1 || choice>5)
+    {
+        Console.Write("Skriv ett heltal eller välj en siffra från meny.\nVälj:");
+    }
+
 
     // These are the choices and what they lead to.
     if (choice == 1)

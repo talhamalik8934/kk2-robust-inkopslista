@@ -49,3 +49,12 @@ När programmet räknade ut total priset stämde inte resultat med summan. Det k
 
 Lösning:
 Ändrade loopens start värde från i=1 till i=0.
+
+## Sjätte fel
+(ShoppingList.cs)
+
+Förklaring:
+När programmet frågade efter varans namn och om man matade in en lowercase istället för en uppercase då tog den inte fram den varan. Felet var i metoden Find i ShoppingList.cs.
+
+Lösning: 
+Jag har lagt till ToLower() på både sidor (item.Name == name). Nu kan man mata in lower eller uppdercase och det kommer komma fram till varan.

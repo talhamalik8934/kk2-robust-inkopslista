@@ -45,7 +45,8 @@ class ShoppingList
     {
         foreach (Item item in items)
         {
-            if (item.Name == name)
+            // To.lower on both sides so lower/uppercase does not matters.
+            if (item.Name.ToLower() == name.ToLower())
             {
                 return item;
             }
@@ -89,7 +90,7 @@ class ShoppingList
     public void Load()
     {
         string[] lines = File.ReadAllLines(path);
-        Console.WriteLine($"rader{lines.Length}");
+        Console.WriteLine($"rader {lines.Length}");
         foreach (string line in lines)
         {
             string[] parts = line.Split(';');

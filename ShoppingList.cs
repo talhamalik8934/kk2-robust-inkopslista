@@ -75,15 +75,18 @@ class ShoppingList
             lines.Add($"{item.Price};{item.Name}");
         }
 
+        // Tries to save the file and handles any file errors.
         try
         {
             File.WriteAllText(path, string.Join("\r\n", lines));
+            Console.WriteLine("Listan är sparad.");
         }
-        catch
+        catch (IOException)
         {
+            Console.WriteLine ("Fel: Kunde inte sparas.");
         }
 
-        Console.WriteLine("Listan är sparad.");
+        
     }
 
     // Reads the file back into the list.

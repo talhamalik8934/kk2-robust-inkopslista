@@ -67,3 +67,12 @@ När programmet startade försökte den direkt läsa in filen med den sparade li
 
 Lösning:
 Jag löste problemmet genom att lägga till en if stats i början av load metoden. If (!file.Exists(Path)) Den kollar först om filen existerar. Om filen inte finns avbryts inläsningen med return. Detta gör att programmet inte kraschar och istället kör med en tom inköpslista. 
+
+## Åttonde fel
+(ShoppingList.cs)
+
+Förklaring:
+I ShoppingList.cs så fanns det en tom catch-sats i Save metoden. Detta är ett dölt fel. Om något gick fel när filen skulle sparas fångades kraschen upp men eftersom catch var tom så hände igenting och programmet gick vidare och skrev ut "Listan är sparad".
+
+Lösning:
+Jag ändrade den tomma catch till catch (IOException) för att fånga fel som handlar om filer. Jag flytade också in "Listan är sparad" i try-blocket och nu när det inte finns något fel så skriver det ut "Listan är sparad" annars "Fel:Kunde inte sparas".

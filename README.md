@@ -40,3 +40,12 @@ Lösning:
 Jag löste problemet i två steg.
 1. Jag lade till en egenskap(Count. get) i ShoppingList- klassen. Det gör att programmet kan läsa exakt hur många varor som finns i listan. 
 2. Sedan lade jag till en while loop i program.cs med TryParse. Det kontrollerar tre saker att inmatning är ett heltal, siffran är minst 1 och siffran inte är större än antal varor i listan.
+
+## Femte fel
+(ShoppingList.cs)
+
+Förklaring: 
+När programmet räknade ut total priset stämde inte resultat med summan. Det kraschade inte med resultat var fel. Felet var i loop i metoden Total() började på i=1 eftersom listor börjar med index(0) så hoppade loopen altid över den första varan i inköpslistan.
+
+Lösning:
+Ändrade loopens start värde från i=1 till i=0.

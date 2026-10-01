@@ -89,8 +89,14 @@ class ShoppingList
     // Reads the file back into the list.
     public void Load()
     {
+        // If-stats that checks if the file exists inorder to prevent crash.
+        if(!File.Exists(path))
+        {
+            return;
+        }
+
         string[] lines = File.ReadAllLines(path);
-        Console.WriteLine($"rader {lines.Length}");
+        
         foreach (string line in lines)
         {
             string[] parts = line.Split(';');

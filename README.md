@@ -58,3 +58,12 @@ När programmet frågade efter varans namn och om man matade in en lowercase ist
 
 Lösning: 
 Jag har lagt till ToLower() på både sidor (item.Name == name). Nu kan man mata in lower eller uppdercase och det kommer komma fram till varan.
+
+## Sjunde fel
+(ShoppingList.cs)
+
+Förklaring:
+När programmet startade försökte den direkt läsa in filen med den sparade listan. Så t.ex om filen inte fanns, eller man råkade byta namn på filen (vilket jag gjorde) då kraschade programmet (System.IO.FileNotFoundException) eftersom det letade efter något som inte fanns.
+
+Lösning:
+Jag löste problemmet genom att lägga till en if stats i början av load metoden. If (!file.Exists(Path)) Den kollar först om filen existerar. Om filen inte finns avbryts inläsningen med return. Detta gör att programmet inte kraschar och istället kör med en tom inköpslista. 

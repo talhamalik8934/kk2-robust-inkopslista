@@ -21,6 +21,12 @@ class ShoppingList
         items.RemoveAt(number - 1);
     }
 
+    // Counts the amount of items in the list.
+    public int Count
+    {
+        get {return items.Count; }
+    }
+
     // Adds up the price of every item on the list.
     public int Total()
     {

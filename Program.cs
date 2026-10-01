@@ -42,11 +42,19 @@ while (true)
 
         list.Add(new Item(name, price)); // This adds the name and the price to the list
     }
-    
+
     else if (choice == 2)
     {
         Console.Write("Nummer: ");
-        int number = int.Parse(Console.ReadLine());
+        
+        int number;
+        
+        //  Loops untill the user enters a valid number which is atleast one and is in the list.
+          while(!int.TryParse(Console.ReadLine(),out number)||number<1|| number> list.Count)
+        {
+            Console.Write("Ange ett nummer som finns i listan.\nNummer:");
+        }
+
         list.RemoveAt(number); 
     }
     else if (choice == 3)

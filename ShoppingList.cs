@@ -1,8 +1,12 @@
 // Holds the items and takes care of loading and saving them.
+using System.Security.Cryptography.X509Certificates;
+
 class ShoppingList
 {
     private List<Item> items = new List<Item>();
     private string path;
+
+    private int budgetTak= 600;
 
     // A construstor that needs an objekt.
     public ShoppingList(string path)
@@ -12,6 +16,15 @@ class ShoppingList
 
     public void Add(Item item)
     {
+        int currentTotal= Total();
+
+        // An if-sats that checks if the total price is more then the budget.
+        // If the totalprice is more then the budget then it throws an exception.
+        if (currentTotal + item.Price > budgetTak)
+        {
+            throw new InvalidOperationException("Du har överstigit budgettak.");
+        }
+
         items.Add(item);
     }
 
@@ -39,6 +52,9 @@ class ShoppingList
 
         return sum;
     }
+
+        
+    
 
     // Looks up an item by its name. Returns null if there is no such item.
     public Item Find(string name)

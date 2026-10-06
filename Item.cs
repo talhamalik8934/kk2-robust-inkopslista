@@ -6,6 +6,7 @@ class Item
     public string Name { get; set; }
     public int Price { get; set; }
 
+   
     public Item(string name, int price)
     {
         Name = name;
@@ -21,10 +22,15 @@ class Item
         {
             // Throws ArgumentOutOfRangeExcrption if the price is negative.
             throw new ArgumentOutOfRangeException("Priset för inte vara negativt");
+            
         }
+    
     }
 
-
+    
+    
+        
+    
     public override string ToString()
     {
         return $"{Name} - {Price} kr";

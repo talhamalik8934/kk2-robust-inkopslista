@@ -54,6 +54,11 @@ while (true)
         {
             list.Add(new Item(name, price)); // This adds the name and the price to the list
         }
+        // Catches InvalidOperationException if the total price is more then the budget.
+        catch (InvalidOperationException ex)
+        {
+            Console.WriteLine($"Fel: {ex.Message} Försök igen");
+        }
         // Catches ArgumentOutOfRangeException if the price is negative.
         catch (ArgumentOutOfRangeException ex)
         {
@@ -64,7 +69,7 @@ while (true)
         {
             Console.WriteLine($"Fel: {ex.Message} Försök igen");
         }
-
+        
         
     }
 

@@ -76,3 +76,11 @@ I ShoppingList.cs så fanns det en tom catch-sats i Save metoden. Detta är ett 
 
 Lösning:
 Jag ändrade den tomma catch till catch (IOException) för att fånga fel som handlar om filer. Jag flytade också in "Listan är sparad" i try-blocket och nu när det inte finns något fel så skriver det ut "Listan är sparad" annars "Fel:Kunde inte sparas".
+
+
+## Designval 
+
+Hantering av budgettak:
+I ShoppingList.cs valde jag att kasta ett undantag "InvalidOperationException" om total summan överskrider budgettak. Jag gjorde detta genom att lägga till variabeln budgettak i shoppinglist som sedan används i add metoden för att kolla om totalsumman blir mer än budgettaket.Om den blir det så kastas ett undantag med en medelande som sedan fångas upp i program.cs.
+
+Motivering till varför jag valde att kasta ett undantag istället för att returnera false är att det följer samma mönster som resten av projektet. Både namn och pris har redan undantag i Item.cs som sedan fångas upp i Program.cs med try-catch. Genom att göra likadant i ShoppingList blir hela felhanteringen strukturerad. Det stoppar felaktiga tillägg direkt och gör det lätt för Program.cs att fånga felet, ge användaren feedback och köra vidare säkert.

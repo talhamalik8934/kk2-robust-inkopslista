@@ -10,6 +10,18 @@ class Item
     {
         Name = name;
         Price = price;
+
+        if ( name=="" || name== null )
+        {
+            // Throws ArgumentException if the name is empty.
+            throw new ArgumentException("Namnet får inte vara tomt");
+        }
+
+        if (price<0)
+        {
+            // Throws ArgumentOutOfRangeExcrption if the price is negative.
+            throw new ArgumentOutOfRangeException("Priset för inte vara negativt");
+        }
     }
 
 

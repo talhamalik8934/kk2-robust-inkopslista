@@ -30,6 +30,16 @@ while (true)
     {
         Console.Write("Namn: ");
         string name = Console.ReadLine();
+
+        // The while-loop stops the user directly if the name is empty. 
+        // It does not requires the user to write in price. Which the try- catch would do.
+        // The ArgumentException is still kept as a backup.
+        while(name=="")
+        {
+            Console.WriteLine("Namnet får inte vara tomt. Försök igen!");
+            Console.Write("Namn: ");
+            name= Console.ReadLine();
+        }
         Console.Write("Pris: ");
 
         int price;
@@ -40,7 +50,22 @@ while (true)
             Console.Write("Ange ett positiv och heltal.\nPris:");
         }
 
-        list.Add(new Item(name, price)); // This adds the name and the price to the list
+        try
+        {
+            list.Add(new Item(name, price)); // This adds the name and the price to the list
+        }
+        // Catches ArgumentOutOfRangeException if the price is negative.
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine($"Fel: {ex.Message} Försök igen");
+        }
+        // Catches ArgumentException if the name is empty.
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Fel: {ex.Message} Försök igen");
+        }
+
+        
     }
 
     else if (choice == 2)

@@ -7,8 +7,7 @@ När jag startade programmet och den kördes load metoden för att läsa in det 
 Detta beror på att textfilen alltid sparades med en tom rad längst ner p.g.a (split(\n)). När programmet försökte läsa den tomma raden för att hitta namn och pris fanns det inget där och programmet kraschade.
 
 Lösning:
-Jag tog bort File.ReadAllText() och Split(\n). Istället använder jag bara File.ReadAllLines.
-Dens funktion är att den delar automatisk raderna och hoppar över tomma rader. 
+Jag tog bort File.ReadAllText() och Split(\n). Jag använder File.ReadAllLines() för att läsa filen rad för rad. På så sätt kan varje sparad vara läsas tillbaka som en egen rad. 
 
 
 ## Andra Fel
@@ -84,3 +83,5 @@ Hantering av budgettak:
 I ShoppingList.cs valde jag att kasta ett undantag "InvalidOperationException" om total summan överskrider budgettak. Jag gjorde detta genom att lägga till variabeln budgettak i shoppinglist som sedan används i add metoden för att kolla om totalsumman blir mer än budgettaket.Om den blir det så kastas ett undantag med en medelande som sedan fångas upp i program.cs.
 
 Motivering till varför jag valde att kasta ett undantag istället för att returnera false är att det följer samma mönster som resten av projektet. Både namn och pris har redan undantag i Item.cs som sedan fångas upp i Program.cs med try-catch. Genom att göra likadant i ShoppingList blir hela felhanteringen strukturerad. Det stoppar felaktiga tillägg direkt och gör det lätt för Program.cs att fånga felet, ge användaren feedback och köra vidare säkert.
+
+
